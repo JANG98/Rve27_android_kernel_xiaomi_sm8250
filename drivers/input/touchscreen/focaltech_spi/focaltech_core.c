@@ -2367,6 +2367,11 @@ static int fts_set_cur_value(int mode, int value)
 	}
 	FTS_INFO("touch mode:%d, value:%d", mode, value);
 
+	if (mode == Touch_Doubletap_Mode && value >= 0) {
+		fts_data->gesture_mode = value;
+		return 0;
+	}
+
 	if (mode >= Touch_Mode_NUM) {
 		FTS_ERROR("mode is error:%d", mode);
 		return -EINVAL;
