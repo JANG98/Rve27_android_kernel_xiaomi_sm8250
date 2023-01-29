@@ -223,6 +223,7 @@ struct fts_ts_data {
 	struct pinctrl_state *pins_suspend;
 	struct pinctrl_state *pins_release;
 #endif
+	int double_tap_pressed;
 #if defined(CONFIG_DRM)
 	struct notifier_block fb_notif;
 #elif defined(CONFIG_HAS_EARLYSUSPEND)
