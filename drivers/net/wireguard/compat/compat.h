@@ -412,7 +412,6 @@ static inline u64 __compat_jiffies64_to_nsecs(u64 j)
 }
 #define jiffies64_to_nsecs __compat_jiffies64_to_nsecs
 #endif
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0)
 static inline u64 ktime_get_coarse_boottime_ns(void)
 {
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
@@ -423,7 +422,6 @@ static inline u64 ktime_get_coarse_boottime_ns(void)
 	return ktime_to_ns(ktime_get_coarse_boottime());
 #endif
 }
-#endif
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 14, 0)
@@ -1138,7 +1136,6 @@ struct dst_cache_pcpu {
 	};
 };
 #define COMPAT_HAS_DEFINED_DST_CACHE_PCPU
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0)
 static inline void dst_cache_reset_now(struct dst_cache *dst_cache)
 {
 	int i;
@@ -1156,7 +1153,6 @@ static inline void dst_cache_reset_now(struct dst_cache *dst_cache)
 		dst_release(dst);
 	}
 }
-#endif
 #endif
 
 #if defined(ISUBUNTU1604) || defined(ISRHEL7)
