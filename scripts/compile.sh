@@ -159,9 +159,26 @@ export KBUILD_BUILD_USER=$KBUILD_BUILD_USER
 export KBUILD_BUILD_HOST=$KBUILD_BUILD_HOST
 export PATH="$CLANG_DIR/bin:$PATH"
 
-make O=out ARCH=arm64 $DEFCONFIG
+echo -e "${GREEN}Generating defconfig...${NC}"
+make O=out LLVM=1 ARCH=arm64 \
+    CC="$_CC_clang" \
+    LD=ld.lld \
+    AR=llvm-ar \
+    AS=llvm-as \
+    NM=llvm-nm \
+    STRIP=llvm-strip \
+    OBJCOPY=llvm-objcopy \
+    OBJDUMP=llvm-objdump \
+    READELF=llvm-readelf \
+    HOSTCC="$_CC_host" \
+    HOSTCXX="$_CXX_host" \
+    HOSTAR=llvm-ar \
+    HOSTLD=ld.lld \
+    CROSS_COMPILE=arm64-linux-gnu- \
+    $DEFCONFIG
 
 compile () {
+    echo -e "${GREEN}Starting kernel compilation...${NC}"
     make -j$(nproc --all) O=out LLVM=1 \
     ARCH=arm64 \
     CC="$_CC_clang" \
