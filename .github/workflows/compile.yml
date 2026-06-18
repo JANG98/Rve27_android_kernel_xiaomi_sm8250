@@ -12,7 +12,7 @@ jobs:
 
       - name: Get AOSP Clang
         run: |
-          wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/mirror-goog-main-llvm-toolchain-source/clang-r574158.tar.gz
+          wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/mirror-goog-main-llvm-toolchain-source/clang-r584948.tar.gz
           mkdir aosp-clang
           tar -xzf clang-r574158.tar.gz -C aosp-clang
           
